@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  customerdb:
+    image: postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+
+  customer.api:
+    image: ${DOCKER_REGISTRY-}customerapi
+    build:
+      context: .
+      dockerfile: Services/Customer/Customer.API/Dockerfile
+
+volumes:    
+    postgres_data:
+    pgadmin_data:
+    
