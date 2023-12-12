@@ -1,13 +1,16 @@
 ﻿using AutoMapper;
 using Customer.API.Models;
 using Customer.API.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Customer.API.Controllers
-{
-    [Route("api/[controller]")]
+{   
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [Authorize]
+    [ApiVersion("1.0")]
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerRepository _repository;

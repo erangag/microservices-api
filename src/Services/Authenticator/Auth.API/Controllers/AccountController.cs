@@ -1,6 +1,5 @@
 ﻿using Auth.Infrastructure.Models;
 using Auth.Infrastructure.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auth.API.Controllers
@@ -97,5 +96,4 @@ namespace Auth.API.Controllers
             return Ok(authResponse);
         }
     }
-}
 }
