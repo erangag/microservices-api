@@ -8,6 +8,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
     <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>ecdb9452-f4f1-4bb5-965f-e14ed8598f20</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Core.csproj" />
+    <ProjectReference Include="..\..\..\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

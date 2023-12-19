@@ -1,6 +1,6 @@
-﻿using Customer.API.Entities;
+﻿using Core.Helpers;
 using Dapper;
-using System.Data.SqlClient;
+using Domain.Entities;
 
 namespace Customer.API.Repositories
 {
@@ -8,12 +8,12 @@ namespace Customer.API.Repositories
     /// Represents a repository for interacting with customer data.
     /// </summary>
     public class CustomerRepository : ICustomerRepository
-    {
-        private readonly string _connectionString;        
+    {        
+        private readonly IDatabaseHelper _databaseHelper;
 
-        public CustomerRepository(IConfiguration configuration)
-        {
-            _connectionString = configuration.GetConnectionString("CustomerDBConnectionStrings") ?? string.Empty;
+        public CustomerRepository(IConfiguration configuration, IDatabaseHelper databaseHelper)
+        {            
+            _databaseHelper = databaseHelper;
         }
 
         /// <summary>
@@ -25,10 +25,8 @@ namespace Customer.API.Repositories
         {
             CustomerProfile result;
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = _databaseHelper.CreateAndOpenConnection())
             {
-                await connection.OpenAsync();
-
                 result = await connection.QueryFirstOrDefaultAsync<CustomerProfile>("SELECT * FROM Customer WHERE Id = @Id", new { Id = id });
             }
 
@@ -42,9 +40,8 @@ namespace Customer.API.Repositories
         {
             List<CustomerProfile> result;
 
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                await connection.OpenAsync();
+            using (var connection = _databaseHelper.CreateAndOpenConnection())
+            {                
                 result = (await connection.QueryAsync<CustomerProfile>("SELECT * FROM Customer")).ToList();
             }
 

@@ -1,4 +1,4 @@
-﻿using Customer.API.Entities;
+﻿using Domain.Entities;
 
 namespace Customer.API.Repositories
 {

@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
-using Customer.API.Models;
 using Customer.API.Repositories;
+using Domain.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Customer.API.Controllers
-{   
+{
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     [Authorize]
@@ -42,5 +41,23 @@ namespace Customer.API.Controllers
             var customers = await _repository.GetCustomersAsync();
             return Ok(_mapper.Map<IEnumerable<CustomerProfileDto>>(customers));
         }
+
+        //[HttpPut]
+        //public async Task ActivateCustomer() 
+        //{
+
+        //}
+
+        //[HttpPut]
+        //public async Task UpdateCustomer()
+        //{
+
+        //}
+
+        //[HttpPost]
+        //public async Task CreateCustomer()
+        //{
+
+        //}
     }
 }

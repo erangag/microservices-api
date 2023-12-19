@@ -1,3 +1,4 @@
+using Core.Helpers;
 using Customer.API.Configurations;
 using Customer.API.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -47,6 +48,12 @@ builder.Services.AddSwaggerGen(options => {
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddSingleton<IDatabaseHelper>(provider =>
+{
+    var configuration = provider.GetRequiredService<IConfiguration>();    
+    var connectionString = configuration.GetConnectionString("CustomerDBConnectionStrings") ?? string.Empty;
+    return new DatabaseHelper(connectionString);
+});
 
 builder.Services.AddAuthentication(options =>
 {

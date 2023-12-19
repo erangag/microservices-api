@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using Customer.API.Entities;
-using Customer.API.Models;
-using System.Runtime;
+using Domain.Entities;
+using Domain.Models;
 
 namespace Customer.API.Configurations
 {

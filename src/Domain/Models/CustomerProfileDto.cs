@@ -1,6 +1,6 @@
-﻿namespace Customer.API.Entities
+﻿namespace Domain.Models
 {
-    public class CustomerProfile
+    public class CustomerProfileDto
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
