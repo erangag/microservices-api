@@ -42,22 +42,23 @@ namespace Customer.API.Controllers
             return Ok(_mapper.Map<IEnumerable<CustomerProfileDto>>(customers));
         }
 
-        //[HttpPut]
-        //public async Task ActivateCustomer() 
-        //{
+        [HttpPut]
+        [Route("activate")]
+        public async Task ActivateCustomer()
+        {
 
-        //}
+        }
 
-        //[HttpPut]
-        //public async Task UpdateCustomer()
-        //{
+        [HttpPut]
+        public async Task UpdateCustomer()
+        {
 
-        //}
+        }
 
-        //[HttpPost]
-        //public async Task CreateCustomer()
-        //{
+        [HttpPost]
+        public async Task CreateCustomer()
+        {
 
-        //}
+        }
     }
 }

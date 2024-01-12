@@ -1,17 +1,19 @@
 version: '3.4'
 
 services:
-  customerdb:
-    image: postgres
+  # customerdb:
+  #   image: postgres
 
-  pgadmin:
-    image: dpage/pgadmin4
+  # pgadmin:
+  #   image: dpage/pgadmin4
 
-  customer.api:
-    image: ${DOCKER_REGISTRY-}customerapi
-    build:
-      context: .
-      dockerfile: Services/Customer/Customer.API/Dockerfile
+  # customer.api:
+  #   image: ${DOCKER_REGISTRY-}customerapi
+  #   build:
+  #     context: .
+  #     dockerfile: Services/Customer/Customer.API/Dockerfile
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
 
 volumes:    
     postgres_data:
